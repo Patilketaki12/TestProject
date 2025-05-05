@@ -32,3 +32,19 @@ def simpleimput_median(df: pd.DataFrame, col: list) -> pd.DataFrame:
     imputer = SimpleImputer(strategy="median")
     df[col] = imputer.fit_transform(df[col])
     return df
+
+
+def simpleimput_const(df: pd.DataFrame, col: list, val: int) -> pd.DataFrame:
+    """
+    Impute missing values in specified columns of a DataFrame using the mean.
+
+    Parameters:
+    - df (pd.DataFrame): The input DataFrame.
+    - columns (list): List of column names to impute.
+
+    Returns:
+    - pd.DataFrame: DataFrame with imputed values.
+    """
+    imputer = SimpleImputer(strategy="constant", fill_value=val)
+    df[col] = imputer.fit_transform(df[col])
+    return df
